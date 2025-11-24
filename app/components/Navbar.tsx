@@ -1,0 +1,93 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+export default function Navbar() {
+    const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const productLinks = [
+        { name: "所有系列 (總覽)", href: "/products" },
+        { name: "所有產品 (列表)", href: "/products?view=all" },
+        { name: "快系列", href: "/products?series=kuai" },
+        { name: "抗撞系列", href: "/products?series=impact" },
+        { name: "超完美系列", href: "/products?series=super" },
+        { name: "藍將系列", href: "/products?series=blue-general" },
+        { name: "藍鑽系列", href: "/products?series=blue-diamond" },
+    ];
+
+    return (
+        <nav className="bg-white shadow-md sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-16">
+                    <div className="flex items-center">
+                        <Link href="/" className="flex-shrink-0 flex flex-col items-start justify-center font-sans">
+                            <span className="text-2xl font-bold text-[#1e3a8a] leading-none tracking-tight">
+                                KANG DING
+                            </span>
+                            <span className="text-[10px] font-medium text-[#6b7280] tracking-[0.2em] ml-0.5">
+                                康鼎光學
+                            </span>
+                        </Link>
+                    </div>
+                    <div className="hidden md:flex items-center space-x-8">
+                        <Link href="/" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                            首頁
+                        </Link>
+
+                        {/* Product Dropdown */}
+                        <div
+                            className="relative group"
+                            onMouseEnter={() => setIsProductMenuOpen(true)}
+                            onMouseLeave={() => setIsProductMenuOpen(false)}
+                        >
+                            <button
+                                type="button"
+                                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center focus:outline-none"
+                            >
+                                產品介紹
+                                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            <div className={`absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 transition-all duration-200 ${isProductMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                                {productLinks.map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+                        <Link href="/about" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                            關於我們
+                        </Link>
+                        <Link href="/contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                            聯絡我們
+                        </Link>
+                        <Link href="/knowledge" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+                            光學知識
+                        </Link>
+                        <Link href="/tools/order-parser" className="text-gray-400 hover:text-gray-600 px-3 py-2 text-xs">
+                            內部工具
+                        </Link>
+                    </div>
+                    <div className="flex items-center md:hidden">
+                        <button className="text-gray-500 hover:text-gray-700">
+                            <span className="sr-only">Open menu</span>
+                            ☰
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    );
+}
