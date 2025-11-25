@@ -69,7 +69,7 @@ export default function HeroCarousel() {
                 >
                     {/* Image Container */}
                     <div className="relative w-full h-full">
-                        {/* 1. Blurred Background (Fills the area) */}
+                        {/* 1. Blurred Background */}
                         <div className="absolute inset-0 overflow-hidden">
                             <Image
                                 src={slide.image}
@@ -80,39 +80,38 @@ export default function HeroCarousel() {
                             />
                         </div>
 
-                        {/* 2. Main Image (Contained, No Cropping) */}
+                        {/* 2. Main Image (Top Aligned, Contained) */}
                         <div className="absolute inset-0">
                             <Image
                                 src={slide.image}
                                 alt={slide.title}
                                 fill
-                                className="object-contain drop-shadow-2xl"
+                                className="object-contain object-top drop-shadow-2xl"
                                 priority={index === 0}
                             />
                         </div>
 
-                        {/* Overlay Gradient (Adjusted for readability) */}
-                        <div className={`absolute inset-0 bg-gradient-to-r ${slide.color} mix-blend-multiply opacity-40`}></div>
-                        <div className="absolute inset-0 bg-black/10"></div>
+                        {/* Overlay Gradient */}
+                        <div className={`absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent md:${slide.color} mix-blend-multiply opacity-60`}></div>
                     </div>
 
                     {/* Content */}
-                    <div className="absolute inset-0 flex items-center">
+                    <div className="absolute inset-0 flex items-end md:items-center pb-12 md:pb-0">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                            <div className={`max-w-xl ${slide.align === "right" ? "ml-auto text-right" : ""}`}>
-                                <h2 className="text-sm md:text-xl font-bold text-white/90 mb-2 tracking-wider uppercase animate-fade-in-up shadow-sm">
+                            <div className={`max-w-xl ${slide.align === "right" ? "md:ml-auto md:text-right" : ""} text-center md:text-left`}>
+                                <h2 className="text-xs md:text-xl font-bold text-white/90 mb-1 md:mb-2 tracking-wider uppercase animate-fade-in-up shadow-sm">
                                     {slide.subtitle}
                                 </h2>
-                                <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight animate-fade-in-up delay-100 drop-shadow-lg">
+                                <h1 className="text-2xl md:text-6xl font-bold text-white mb-2 md:mb-6 leading-tight animate-fade-in-up delay-100 drop-shadow-lg whitespace-nowrap md:whitespace-normal">
                                     {slide.title}
                                 </h1>
-                                <p className="text-base md:text-xl text-gray-100 mb-6 md:mb-8 leading-relaxed animate-fade-in-up delay-200 drop-shadow-md max-w-sm md:max-w-none">
+                                <p className="text-sm md:text-xl text-gray-100 mb-4 md:mb-8 leading-relaxed animate-fade-in-up delay-200 drop-shadow-md line-clamp-2 md:line-clamp-none px-4 md:px-0">
                                     {slide.desc}
                                 </p>
-                                <div className={`animate-fade-in-up delay-300 ${slide.align === "right" ? "flex justify-end" : ""}`}>
+                                <div className={`animate-fade-in-up delay-300 flex justify-center ${slide.align === "right" ? "md:justify-end" : "md:justify-start"}`}>
                                     <Link
                                         href="/products"
-                                        className="bg-white text-gray-900 hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg inline-block"
+                                        className="bg-white text-gray-900 hover:bg-gray-100 font-bold py-2 px-6 md:py-4 md:px-8 text-sm md:text-base rounded-full transition-all transform hover:scale-105 shadow-lg inline-block"
                                     >
                                         探索全系列
                                     </Link>
