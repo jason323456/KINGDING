@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Link from "next/link";
+import HeroCarousel from "./components/HeroCarousel";
 
 export default function Home() {
   return (
@@ -9,33 +10,7 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <div className="relative bg-blue-900 text-white">
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-          <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
-              專業鏡片供應的最佳夥伴
-            </h1>
-            <p className="mt-6 text-xl text-blue-100 max-w-3xl">
-              提供全方位光學鏡片解決方案，現貨充足、品質穩定。
-              <br />
-              致力於成為眼鏡店與中盤商最強大的後盾。
-            </p>
-            <div className="mt-10 flex gap-4">
-              <Link
-                href="/products"
-                className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10"
-              >
-                瀏覽產品
-              </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
-              >
-                聯絡我們
-              </Link>
-            </div>
-          </div>
-        </div>
+        <HeroCarousel />
 
         {/* Features Section */}
         <div className="py-16 bg-gray-50">

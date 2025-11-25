@@ -150,76 +150,7 @@ export default function Knowledge() {
                         </div>
                     </section>
 
-                    {/* Section 3: Coating Technology */}
-                    <section id="coatings">
-                        <div className="flex items-center gap-4 mb-8">
-                            <span className="text-4xl">🛡️</span>
-                            <div>
-                                <h2 className="text-3xl font-bold text-gray-900">頂級鍍膜工藝 (Premium Coatings)</h2>
-                                <p className="text-gray-500">層層防護，打造清晰耐用的完美視覺</p>
-                            </div>
-                        </div>
 
-                        <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                                {/* 1. Hard Coating */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-2xl mb-4">💎</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">堅硬鍍膜 (Hard Coating)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        強化鏡片表面硬度，大幅提升<strong>耐磨防刮</strong>能力。雖然無法達到完全防刮，但能有效抵抗日常擦拭與微塵造成的細紋，延長鏡片使用壽命。
-                                    </p>
-                                </div>
-
-                                {/* 2. Anti-Reflective */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-2xl mb-4">✨</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">抗反光鍍膜 (Anti-Reflective)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        消除鏡片表面的惱人反光與鬼影，讓光線穿透率高達 99%。不僅<strong>視覺更清晰透亮</strong>，拍照時也不會因為反光而擋住您的眼睛，美觀度大增。
-                                    </p>
-                                </div>
-
-                                {/* 3. Clean Coat */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-2xl mb-4">💧</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">易潔鍍膜 (Clean Coat)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        也就是常見的 <strong>SHMC 超防水</strong>。具備卓越的疏水疏油特性，水珠會自然滑落，指紋油漬不易附著，只需輕輕擦拭即可恢復乾淨。
-                                    </p>
-                                </div>
-
-                                {/* 4. Anti-Static */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-2xl mb-4">⚡</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">抗靜電鍍膜 (Anti-Static)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        一般鏡片擦拭時容易產生靜電吸附灰塵。抗靜電層能有效<strong>減少灰塵吸附</strong>，保持鏡片長久潔淨，減少頻繁擦拭的需求。
-                                    </p>
-                                </div>
-
-                                {/* 5. Blue Cut */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-yellow-50 rounded-lg flex items-center justify-center text-2xl mb-4">💻</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">抗藍光鍍膜 (Blue Cut)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        針對數位裝置發出的高能藍光進行過濾。有效減輕長時間使用電腦、手機造成的<strong>眼睛疲勞</strong>與乾澀，是現代數位生活的必備防護。
-                                    </p>
-                                </div>
-
-                                {/* 6. UV Protection */}
-                                <div className="flex flex-col items-start">
-                                    <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-2xl mb-4">☀️</div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">UV400 防護 (UV Protection)</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        完全阻隔波長 400nm 以下的有害紫外線 (UVA/UVB)。全天候保護眼睛免受紫外線傷害，延緩眼部老化與白內障風險。
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </section>
 
                     {/* Section 4: Photochromic Technology */}
                     <section id="photochromic">
@@ -347,6 +278,92 @@ export default function Knowledge() {
                                         <li><strong>優點：</strong>可依需求選擇「加強防護(藍膜)」或「極致透亮(綠/鉑金膜)」。</li>
                                         <li><strong>缺點：</strong>價格較高，技術門檻高。</li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 5: Lens Coating */}
+                    <section id="coating">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="text-4xl">🛡️</span>
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900">頂級鍍膜工藝 (Premium Coatings)</h2>
+                                <p className="text-gray-500">層層防護，打造清晰耐用的完美視覺</p>
+                            </div>
+                        </div>
+
+                        {/* 6 Grid Layout */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                            {/* 1. Hard Coating */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div className="text-3xl mb-4">💎</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">堅硬鍍膜 (Hard Coating)</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    強化鏡片表面硬度，大幅提升<span className="text-blue-600 font-bold">耐磨防刮能力</span>。雖然無法達到完全防刮，但能有效抵抗日常擦拭與微塵造成的細紋，延長鏡片使用壽命。
+                                </p>
+                            </div>
+
+                            {/* 2. Anti-Reflective */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div className="text-3xl mb-4">✨</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">抗反光鍍膜 (Anti-Reflective)</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    消除鏡片表面的惱人反光與鬼影，讓光線穿透率高達 99%。不僅視覺更<span className="text-blue-600 font-bold">清晰透亮</span>，拍照時也不會因為反光而擋住您的眼睛，美觀大增。
+                                </p>
+                            </div>
+
+                            {/* 3. Clean Coat */}
+                            <div className="bg-blue-50 p-6 rounded-xl shadow-md border border-blue-100 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">SHMC 核心</div>
+                                <div className="text-3xl mb-4">💧</div>
+                                <h3 className="text-lg font-bold text-blue-800 mb-2">易潔鍍膜 (Clean Coat)</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">
+                                    也就是常見的 <span className="font-bold">SHMC 超防水</span>。具備卓越的疏水疏油特性，水珠會自然滑落，指紋油漬不易附著，只需<span className="text-blue-600 font-bold">輕輕擦拭即可恢復乾淨</span>。
+                                </p>
+                            </div>
+
+                            {/* 4. Anti-Static */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div className="text-3xl mb-4">⚡</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">抗靜電鍍膜 (Anti-Static)</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    一般鏡片擦拭時容易產生靜電吸附灰塵。抗靜電層能有效減少灰塵吸附，保持鏡片長久潔淨，減少頻繁擦拭的需求。
+                                </p>
+                            </div>
+
+                            {/* 5. Blue Cut */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div className="text-3xl mb-4">💻</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">抗藍光鍍膜 (Blue Cut)</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    針對數位裝置發出的高能藍光進行過濾。有效減輕長時間使用電腦、手機造成的眼睛疲勞與乾澀，是現代數位生活的必備防護。
+                                </p>
+                            </div>
+
+                            {/* 6. UV400 */}
+                            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                <div className="text-3xl mb-4">☀️</div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">UV400 防護 (UV Protection)</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    完全阻隔波長 400nm 以下的有害紫外線 (UVA/UVB)。全天候保護眼睛免受紫外線傷害，延緩眼部老化與白內障風險。
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Summary Box */}
+                        <div className="bg-gray-100 rounded-xl p-6 border border-gray-200">
+                            <h4 className="text-lg font-bold text-gray-800 mb-4 text-center">總結：HMC 與 SHMC 的差別</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="text-center">
+                                    <div className="text-gray-500 font-bold mb-2">HMC (標準鍍膜)</div>
+                                    <div className="text-sm text-gray-500">包含：💎 堅硬 + ✨ 抗反光 + ⚡ 抗靜電 + ☀️ UV400</div>
+                                </div>
+                                <div className="text-center border-t md:border-t-0 md:border-l border-gray-300 pt-4 md:pt-0 md:pl-8">
+                                    <div className="text-blue-600 font-bold mb-2">SHMC (超防水鍍膜)</div>
+                                    <div className="text-sm text-gray-600">
+                                        包含：<span className="font-bold">HMC 所有功能</span> + <span className="text-blue-600 font-bold">💧 易潔鍍膜 (關鍵差異)</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

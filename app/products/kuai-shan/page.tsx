@@ -89,6 +89,17 @@ export default function KuaiShanPage() {
                 </div>
             </section>
 
+            {/* Coating Info Link */}
+            <section className="py-12 px-4 bg-blue-900 text-white text-center">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold mb-4">想了解 HMC 與 SHMC 鍍膜的差別？</h2>
+                    <p className="text-blue-200 mb-6">為什麼 SHMC 超防水鍍膜更好清潔、更耐用？</p>
+                    <Link href="/knowledge#coating" className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-colors">
+                        查看鍍膜科技詳解
+                    </Link>
+                </div>
+            </section>
+
             {/* Feature Cards */}
             <section className="py-24 px-4 bg-gray-50">
                 <div className="max-w-6xl mx-auto">
@@ -188,7 +199,7 @@ export default function KuaiShanPage() {
                             <div className="h-2 w-12 bg-gray-400 mb-4 rounded-full"></div>
                             <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">快閃 Classic</h3>
                             <p className="text-xs font-bold text-gray-500 mb-3">綠膜 | 球面</p>
-                            <p className="text-sm text-gray-500 mb-4 leading-relaxed">舊款/清庫存；價目表標示「Classic (380)」避免混淆。</p>
+                            <p className="text-sm text-gray-500 mb-4 leading-relaxed">經典入門款；價目表標示「Classic」避免混淆。</p>
                             <span className="text-xs font-bold text-gray-400 bg-gray-100 px-2 py-1 rounded">CLEARANCE</span>
                         </Link>
                     </div>

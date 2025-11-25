@@ -56,7 +56,7 @@ const productsData: Series[] = [
                     { name: "快閃 Pro", coating: "綠膜", specs: "UV400 99% CUT / 1.56 非球面 / SHMC (超防水)", desc: "入門高CP升級款；快變快退、底色清晰，低~中度數戶外/日常首選。", tag: "NEW", accentColor: "blue" },
                     { name: "快閃・澈", coating: "淨藍膜 (低反)", specs: "UV400 99% CUT / 1.56 非球面 / SHMC", desc: "低反射更清亮、畫面乾淨，通勤/長時使用、對反光敏感者推薦。", tag: "NEW", accentColor: "blue", link: "/products/kuai-shan" },
                     { name: "快閃・眩盾", coating: "AG 紫膜 (防眩)", specs: "UV400 99% CUT / 1.56 非球面 / SHMC", desc: "強光/夜間燈源環境舒適，駕車/戶外活動專用。", tag: "NEW", accentColor: "blue" },
-                    { name: "快閃 Classic (舊)", coating: "綠膜", specs: "UV380 / 球面 / 無超防水", desc: "舊款/清庫存；價目表標示「Classic (380)」避免混淆。", tag: "OLD", accentColor: "gray" },
+                    { name: "快閃 Classic", coating: "綠膜", specs: "UV400 / 球面 / 無超防水", desc: "經典入門款；價目表標示「Classic」避免混淆。", tag: "OLD", accentColor: "gray" },
                 ]
             },
             {
