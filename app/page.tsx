@@ -55,7 +55,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-medium text-gray-900">品質認證</h3>
                   <p className="mt-2 text-base text-gray-500">
-                    嚴選中國優質工廠，產品符合國際光學標準，品質穩定有保障。
+                    嚴選優質工廠，產品符合國際光學標準，品質穩定有保障。
                   </p>
                 </div>
               </div>
