@@ -59,7 +59,7 @@ export default function HeroCarousel() {
     };
 
     return (
-        <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-gray-900">
+        <div className="relative w-full h-[550px] md:h-[700px] overflow-hidden bg-gray-900">
             {/* Slides */}
             {slides.map((slide, index) => (
                 <div
@@ -100,13 +100,13 @@ export default function HeroCarousel() {
                     <div className="absolute inset-0 flex items-center">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                             <div className={`max-w-xl ${slide.align === "right" ? "ml-auto text-right" : ""}`}>
-                                <h2 className="text-lg md:text-xl font-bold text-white/80 mb-2 tracking-wider uppercase animate-fade-in-up">
+                                <h2 className="text-sm md:text-xl font-bold text-white/90 mb-2 tracking-wider uppercase animate-fade-in-up shadow-sm">
                                     {slide.subtitle}
                                 </h2>
-                                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up delay-100">
+                                <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight animate-fade-in-up delay-100 drop-shadow-lg">
                                     {slide.title}
                                 </h1>
-                                <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed animate-fade-in-up delay-200">
+                                <p className="text-base md:text-xl text-gray-100 mb-6 md:mb-8 leading-relaxed animate-fade-in-up delay-200 drop-shadow-md max-w-sm md:max-w-none">
                                     {slide.desc}
                                 </p>
                                 <div className={`animate-fade-in-up delay-300 ${slide.align === "right" ? "flex justify-end" : ""}`}>
