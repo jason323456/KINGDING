@@ -371,8 +371,8 @@ function HeroBanner({ series }: { series: Series }) {
                         {/* CSS Logo at Bottom Left */}
                         <div className="absolute bottom-8 left-8 z-20 flex items-end gap-3 opacity-90">
                             {/* Red Square "Uniqlo Style" */}
-                            <div className="w-16 h-16 bg-[#EC1D24] flex items-center justify-center shadow-sm">
-                                <span className="text-white text-4xl font-bold leading-none mt-[-4px]" style={{ fontFamily: 'var(--font-chen)' }}>
+                            <div className="w-16 h-16 bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
+                                <span className="text-white text-[3.5rem] font-bold leading-none mt-[-8px] ml-[-1px]" style={{ fontFamily: 'var(--font-chen)' }}>
                                     快
                                 </span>
                             </div>
@@ -394,8 +394,8 @@ function HeroBanner({ series }: { series: Series }) {
                             key={index}
                             onClick={() => setCurrentKuaiSlide(index)}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
-                                    ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
-                                    : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
+                                ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
+                                : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
                                 }`}
                         />
                     ))}
