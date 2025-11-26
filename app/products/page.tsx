@@ -300,45 +300,6 @@ function HeroBanner({ series }: { series: Series }) {
         blue: 'bg-blue-100 text-blue-800',
     };
 
-    // Custom Hero for Kuai Series (Black & Red Theme)
-    if (series.id === 'kuai') {
-        return (
-            <div className="py-24 relative overflow-hidden bg-black text-white">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black"></div>
-
-                {/* Red Accent Block (Abstract 'Card' feel) */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-red-900/20 to-transparent rounded-bl-full transform translate-x-1/3 -translate-y-1/3"></div>
-
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-                    {/* Red 'Fast' Logo Box */}
-                    <div className="mb-8 w-20 h-20 bg-red-700 flex items-center justify-center shadow-[0_0_30px_rgba(185,28,28,0.4)]">
-                        <span className="text-5xl font-bold text-white tracking-tighter">快</span>
-                    </div>
-
-                    <span className="inline-block py-1 px-3 border border-red-700 text-red-500 text-xs font-bold tracking-[0.3em] mb-6 uppercase">
-                        {series.tag}
-                    </span>
-
-                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                        {series.name} <span className="text-red-600 font-light">{series.englishName}</span>
-                    </h1>
-
-                    <p className="text-xl md:text-2xl font-light tracking-[0.2em] mb-10 text-gray-400">
-                        {series.desc}
-                    </p>
-
-                    {/* Kuai Series Special Features */}
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-gray-300 text-sm md:text-base font-medium">
-                        <span className="flex items-center gap-2"><span className="text-red-600 text-xl">⚡</span> 變色反應快</span>
-                        <span className="flex items-center gap-2"><span className="text-red-600 text-xl">⚡</span> 褪色快</span>
-                        <span className="flex items-center gap-2"><span className="text-red-600 text-xl">✨</span> 視野乾淨穩定</span>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
             {/* Background Pattern */}
@@ -350,10 +311,18 @@ function HeroBanner({ series }: { series: Series }) {
         `}>
                     {series.tag}
                 </span>
-                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-                    {series.name} <span className={`${isDark ? 'text-yellow-400' : 'text-gray-400 font-light'}`}>{series.englishName}</span>
+
+                {/* Chinese Name */}
+                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+                    {series.name}
                 </h1>
-                <p className={`text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
+
+                {/* English Name (New Line) */}
+                <h2 className={`text-3xl md:text-5xl font-light mb-8 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                    {series.englishName}
+                </h2>
+
+                <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
                     {series.desc}
                 </p>
             </div>
