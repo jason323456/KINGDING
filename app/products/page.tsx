@@ -300,6 +300,99 @@ function HeroBanner({ series }: { series: Series }) {
         blue: 'bg-blue-100 text-blue-800',
     };
 
+    // --- Custom Carousel for Kuai Series ---
+    const [currentKuaiSlide, setCurrentKuaiSlide] = useState(0);
+
+    useEffect(() => {
+        if (series.id === 'kuai') {
+            const timer = setInterval(() => {
+                setCurrentKuaiSlide((prev) => (prev + 1) % 2);
+            }, 5000);
+            return () => clearInterval(timer);
+        }
+    }, [series.id]);
+
+    if (series.id === 'kuai') {
+        const kuaiSlides = [
+            {
+                id: 0,
+                bg: "bg-white",
+                textColor: "text-gray-900",
+                subTextColor: "text-gray-500",
+                tagColor: "bg-blue-100 text-blue-800",
+                title: "快閃系列",
+                subtitle: "Flash Series",
+                desc: "基材雙面變色 | 入門高CP首選",
+                fontClass: "font-sans"
+            },
+            {
+                id: 1,
+                bg: "bg-black",
+                textColor: "text-white",
+                subTextColor: "text-gray-400",
+                tagColor: "bg-gray-800 text-white border border-gray-700",
+                title: "快變系列",
+                subtitle: "Change Series",
+                desc: "旋塗膜層變色 | 高階全場景",
+                fontClass: "font-chen"
+            }
+        ];
+
+        return (
+            <div className="relative h-[500px] overflow-hidden bg-gray-900">
+                {kuaiSlides.map((slide, index) => (
+                    <div
+                        key={slide.id}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out flex flex-col items-center justify-center text-center px-4 ${index === currentKuaiSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                            } ${slide.bg}`}
+                    >
+                        {/* Content */}
+                        <div className="relative z-10 max-w-4xl mx-auto">
+                            <span className={`inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest mb-6 ${slide.tagColor}`}>
+                                {series.tag}
+                            </span>
+
+                            <h1 className={`text-6xl md:text-8xl font-bold tracking-tight mb-4 ${slide.textColor} ${slide.id === 1 ? 'font-chen' : ''}`} style={slide.id === 1 ? { fontFamily: 'var(--font-chen)' } : {}}>
+                                {slide.title}
+                            </h1>
+
+                            <h2 className={`text-3xl md:text-5xl font-light mb-8 ${slide.subTextColor}`}>
+                                {slide.subtitle}
+                            </h2>
+
+                            <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${slide.subTextColor}`}>
+                                {slide.desc}
+                            </p>
+                        </div>
+
+                        {/* Logo at Bottom Left */}
+                        <div className="absolute bottom-8 left-8 z-20 w-32 md:w-48 opacity-80">
+                            <img
+                                src="/images/kuai-logo.png"
+                                alt="Kuai Series Logo"
+                                className={`w-full h-auto ${slide.id === 1 ? 'invert brightness-0 invert' : ''}`}
+                            />
+                        </div>
+                    </div>
+                ))}
+
+                {/* Indicators */}
+                <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
+                    {kuaiSlides.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentKuaiSlide(index)}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
+                                    ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
+                                    : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
+                                }`}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
             {/* Background Pattern */}
