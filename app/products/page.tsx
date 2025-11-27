@@ -367,150 +367,150 @@ function HeroBanner({ series }: { series: Series }) {
                                 {slide.desc}
                             </p>
                         </div>
-                ))}
 
-                        {/* Indicators */}
-                        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
-                            {kuaiSlides.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentKuaiSlide(index)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
-                                        ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
-                                        : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
-                                        }`}
-                                />
-                            ))}
+                        {/* CSS Logo at Bottom Left */}
+                        <div className="absolute bottom-8 left-8 z-20 flex flex-col items-start select-none opacity-90">
+                            {/* Top Row: Red Box + Chinese Text */}
+                            <div className="flex items-center gap-3 mb-2">
+                                <div className="w-[60px] h-[60px] bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
+                                    <span className="text-white font-black leading-none text-[3.5rem] mt-[-4px]" style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}>
+                                        快
+                                    </span>
+                                </div>
+                                <span
+                                    className={`text-6xl font-black tracking-tighter leading-none ${slide.textColor}`}
+                                    style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}
+                                >
+                                    系列
+                                </span>
+                            </div>
+                            {/* English Text */}
+                            <div className={`flex flex-col items-start font-bold tracking-wider ${slide.textColor}`} style={{ fontFamily: 'var(--font-geist-sans), sans-serif' }}>
+                                <span className="text-2xl leading-none mb-1">KUAI SERIES</span>
+                                <span className="text-2xl leading-none">PHOTOCHROMIC LENS</span>
+                            </div>
                         </div>
                     </div>
-                );
+                ))}
+
+                {/* Indicators */}
+                <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
+                    {kuaiSlides.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentKuaiSlide(index)}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
+                                ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
+                                : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
+                                }`}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
     }
 
-                return (
-                <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
-                    {/* Background Pattern */}
-                    <div className={`absolute inset-0 opacity-10 ${isDark ? 'bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black' : 'bg-gray-50'}`}></div>
+    return (
+        <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
+            {/* Background Pattern */}
+            <div className={`absolute inset-0 opacity-10 ${isDark ? 'bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black' : 'bg-gray-50'}`}></div>
 
-                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <span className={`inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest mb-6 
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span className={`inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest mb-6 
           ${isDark ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : tagColors[series.tagColor] || tagColors.blue}
         `}>
-                            {series.tag}
-                        </span>
+                    {series.tag}
+                </span>
 
-                        {/* Chinese Name */}
-                        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
-                            {series.name}
-                        </h1>
+                {/* Chinese Name */}
+                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+                    {series.name}
+                </h1>
 
-                        {/* English Name (New Line) */}
-                        <h2 className={`text-3xl md:text-5xl font-light mb-8 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
-                            {series.englishName}
-                        </h2>
+                {/* English Name (New Line) */}
+                <h2 className={`text-3xl md:text-5xl font-light mb-8 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                    {series.englishName}
+                </h2>
 
-                        <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
-                            {series.desc}
-                        </p>
-                    </div>
-                </div>
-                );
+                <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
+                    {series.desc}
+                </p>
+            </div>
+        </div>
+    );
 }
 
-                // --- Main Page Content ---
+// --- Main Page Content ---
 
-                function ProductsContent() {
+function ProductsContent() {
     const searchParams = useSearchParams();
-                const router = useRouter();
-                const seriesParam = searchParams.get('series');
-                const viewParam = searchParams.get('view');
+    const router = useRouter();
+    const seriesParam = searchParams.get('series');
+    const viewParam = searchParams.get('view');
 
-                // Determine current mode
-                const isAllView = viewParam === 'all';
-                const activeSeriesId = seriesParam;
+    // Determine current mode
+    const isAllView = viewParam === 'all';
+    const activeSeriesId = seriesParam;
     const activeSeries = productsData.find(s => s.id === activeSeriesId);
 
     const handleSeriesClick = (seriesId: string) => {
-                    router.push(`/products?series=${seriesId}`);
+        router.push(`/products?series=${seriesId}`);
     };
 
-                return (
-                <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
-                    <Navbar />
+    return (
+        <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
+            <Navbar />
 
-                    <main className="flex-grow">
+            <main className="flex-grow">
 
-                        {/* MODE 1: SINGLE SERIES VIEW (Active when ?series=ID is present) */}
-                        {activeSeries ? (
-                            <div className="animate-fade-in">
-                                {/* Sticky Tabs */}
-                                <div className="bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm overflow-x-auto">
-                                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                        <div className="flex justify-start md:justify-center space-x-4 md:space-x-8 min-w-max px-2">
-                                            {productsData.map((series) => (
-                                                <button
-                                                    key={series.id}
-                                                    onClick={() => router.push(`/products?series=${series.id}`)}
-                                                    className={`py-4 px-2 border-b-2 font-medium text-base md:text-lg transition-colors duration-200 whitespace-nowrap ${activeSeries.id === series.id
-                                                        ? 'border-blue-600 text-blue-600'
-                                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                                        }`}
-                                                >
-                                                    {series.name}
-                                                </button>
-                                            ))}
-                                            <div className="flex items-center border-l border-gray-200 pl-4 ml-2 space-x-4">
-                                                <button
-                                                    onClick={() => router.push('/products')}
-                                                    className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                                >
-                                                    ↶ 返回系列總覽
-                                                </button>
-                                                <button
-                                                    onClick={() => router.push('/products?view=all')}
-                                                    className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                                >
-                                                    ≡ 所有產品
-                                                </button>
-                                            </div>
-                                        </div>
+                {/* MODE 1: SINGLE SERIES VIEW (Active when ?series=ID is present) */}
+                {activeSeries ? (
+                    <div className="animate-fade-in">
+                        {/* Sticky Tabs */}
+                        <div className="bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm overflow-x-auto">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className="flex justify-start md:justify-center space-x-4 md:space-x-8 min-w-max px-2">
+                                    {productsData.map((series) => (
+                                        <button
+                                            key={series.id}
+                                            onClick={() => router.push(`/products?series=${series.id}`)}
+                                            className={`py-4 px-2 border-b-2 font-medium text-base md:text-lg transition-colors duration-200 whitespace-nowrap ${activeSeries.id === series.id
+                                                ? 'border-blue-600 text-blue-600'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                                }`}
+                                        >
+                                            {series.name}
+                                        </button>
+                                    ))}
+                                    <div className="flex items-center border-l border-gray-200 pl-4 ml-2 space-x-4">
+                                        <button
+                                            onClick={() => router.push('/products')}
+                                            className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                        >
+                                            ↶ 返回系列總覽
+                                        </button>
+                                        <button
+                                            onClick={() => router.push('/products?view=all')}
+                                            className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                        >
+                                            ≡ 所有產品
+                                        </button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                {/* Hero Banner */}
-                                <HeroBanner series={activeSeries} />
+                        {/* Hero Banner */}
+                        <HeroBanner series={activeSeries} />
 
-                                {/* Series Content */}
-                                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                                    {
-                                        activeSeries.subSeries ? (
+                        {/* Series Content */}
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                            {
+                                activeSeries.subSeries ? (
                                             <div className="space-y-20">
                                                 {activeSeries.subSeries.map((sub) => (
                                                     <div key={sub.title}>
                                                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gray-200 pb-6">
-                                                            <div>
-                                                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                                                                    {sub.title} <span className="text-lg text-gray-500 font-normal ml-2">{sub.subtitle}</span>
-                                                                </h2>
-                                                                <p className="text-gray-500 font-medium">{sub.desc}</p>
-                                                            </div>
-                                                            {sub.tag && (
-                                                                <div className="mt-4 md:mt-0">
-                                                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${sub.tag.includes('旗艦') ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
-                                                                        }`}>
-                                                                        {sub.tag}
-                                                                    </span>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                        <div className={`grid grid-cols-1 md:grid-cols-2 ${sub.products.length > 2 ? 'lg:grid-cols-3' : ''} gap-8`}>
-                                                            {sub.products.map((product) => (
-                                                                <ProductCard key={product.name} {...product} />
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ) : (
                                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                                 {activeSeries.products?.map((product) => (
                                                     <ProductCard key={product.name} {...product} />
@@ -586,13 +586,13 @@ function HeroBanner({ series }: { series: Series }) {
 
                     <Footer />
                 </div>
-                );
+                        );
 }
 
-                export default function Products() {
+                        export default function Products() {
     return (
-                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-                    <ProductsContent />
-                </Suspense>
-                );
+                        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+                            <ProductsContent />
+                        </Suspense>
+                        );
 }
