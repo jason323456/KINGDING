@@ -323,8 +323,7 @@ function HeroBanner({ series }: { series: Series }) {
                 title: "快閃系列",
                 subtitle: "Flash Series",
                 desc: "基材雙面變色 | 入門高CP首選",
-                fontClass: "font-chen",
-                logoSrc: "/images/kuai-shan-logo.png"
+                fontClass: "font-chen"
             },
             {
                 id: 1,
@@ -335,8 +334,7 @@ function HeroBanner({ series }: { series: Series }) {
                 title: "快變系列",
                 subtitle: "Change Series",
                 desc: "旋塗膜層變色 | 高階全場景",
-                fontClass: "font-sans",
-                logoSrc: "/images/kuai-bian-logo.png"
+                fontClass: "font-sans"
             }
         ];
 
@@ -370,14 +368,26 @@ function HeroBanner({ series }: { series: Series }) {
                             </p>
                         </div>
 
-                        {/* Image Logo at Bottom Left */}
-                        <div className="absolute bottom-8 left-8 z-20 opacity-90">
-                            <div className="relative w-48 h-auto">
-                                <img
-                                    src={slide.logoSrc}
-                                    alt={`${slide.title} Logo`}
-                                    className="w-full h-auto object-contain"
-                                />
+                        {/* CSS Logo at Bottom Left */}
+                        <div className="absolute bottom-8 left-8 z-20 flex flex-col items-start select-none opacity-90">
+                            {/* Top Row: Red Box + Chinese Text */}
+                            <div className="flex items-center gap-4 mb-3">
+                                <div className="w-20 h-20 bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
+                                    <span className="text-white font-bold leading-none text-[4.5rem] mt-[-6px] ml-[-1px]" style={{ fontFamily: 'var(--font-chen)' }}>
+                                        快
+                                    </span>
+                                </div>
+                                <span
+                                    className={`text-6xl font-bold tracking-tighter ${slide.textColor}`}
+                                    style={{ fontFamily: 'var(--font-chen)' }}
+                                >
+                                    系列
+                                </span>
+                            </div>
+                            {/* English Text */}
+                            <div className={`flex flex-col items-start font-sans font-bold tracking-wider ${slide.textColor}`}>
+                                <span className="text-2xl leading-none mb-1">KUAI SERIES</span>
+                                <span className="text-2xl leading-none">PHOTOCHROMIC LENS</span>
                             </div>
                         </div>
                     </div>
