@@ -324,7 +324,7 @@ function HeroBanner({ series }: { series: Series }) {
                 subtitle: "Flash Series",
                 desc: "基材雙面變色 | 入門高CP首選",
                 fontClass: "font-chen",
-                logoSrc: "/images/logo-kuai-shan.png"
+                logoSrc: "/images/kuai-shan-logo.png"
             },
             {
                 id: 1,
@@ -336,7 +336,7 @@ function HeroBanner({ series }: { series: Series }) {
                 subtitle: "Change Series",
                 desc: "旋塗膜層變色 | 高階全場景",
                 fontClass: "font-sans",
-                logoSrc: "/images/logo-kuai-bian.png"
+                logoSrc: "/images/kuai-bian-logo.png"
             }
         ];
 
@@ -372,11 +372,13 @@ function HeroBanner({ series }: { series: Series }) {
 
                         {/* Image Logo at Bottom Left */}
                         <div className="absolute bottom-8 left-8 z-20 opacity-90">
-                            <img
-                                src={slide.logoSrc}
-                                alt={`${slide.title} Logo`}
-                                className="w-48 md:w-64 h-auto object-contain"
-                            />
+                            <div className="relative w-48 h-auto">
+                                <img
+                                    src={slide.logoSrc}
+                                    alt={`${slide.title} Logo`}
+                                    className="w-full h-auto object-contain"
+                                />
+                            </div>
                         </div>
                     </div>
                 ))}
