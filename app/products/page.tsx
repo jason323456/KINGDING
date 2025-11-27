@@ -541,13 +541,12 @@ function ProductsContent() {
                                         ))}
                                     </div>
                                 )
-                                </div>
+                            }
+                        </div>
                     </div>
                 ) : isAllView ? (
                     // MODE 2: ALL PRODUCTS LIST (Sidebar View)
                     <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                        {/* ... (Previous Sidebar implementation can remain or be simplified if user prefers the Single View mostly) ... */}
-                        {/* Re-using the sidebar logic for completeness if user explicitly goes to ?view=all */}
                         <div className="flex flex-col lg:flex-row gap-12">
                             <aside className="hidden lg:block w-64 flex-shrink-0">
                                 <div className="sticky top-24 space-y-1">
@@ -567,7 +566,6 @@ function ProductsContent() {
                                             <h2 className="text-3xl font-bold text-gray-900">{series.name}</h2>
                                             <p className="mt-2 text-gray-500">{series.desc}</p>
                                         </div>
-                                        {/* Simplified rendering for list view */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {series.subSeries
                                                 ? series.subSeries.flatMap(s => s.products).map(p => <ProductCard key={p.name} {...p} />)
