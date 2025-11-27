@@ -323,7 +323,8 @@ function HeroBanner({ series }: { series: Series }) {
                 title: "快閃系列",
                 subtitle: "Flash Series",
                 desc: "基材雙面變色 | 入門高CP首選",
-                fontClass: "font-chen"
+                fontClass: "font-chen",
+                logoSrc: "/images/logo-kuai-shan.png"
             },
             {
                 id: 1,
@@ -334,7 +335,8 @@ function HeroBanner({ series }: { series: Series }) {
                 title: "快變系列",
                 subtitle: "Change Series",
                 desc: "旋塗膜層變色 | 高階全場景",
-                fontClass: "font-sans"
+                fontClass: "font-sans",
+                logoSrc: "/images/logo-kuai-bian.png"
             }
         ];
 
@@ -368,21 +370,13 @@ function HeroBanner({ series }: { series: Series }) {
                             </p>
                         </div>
 
-                        {/* CSS Logo at Bottom Left */}
-                        <div className="absolute bottom-8 left-8 z-20 flex items-end gap-3 opacity-90">
-                            {/* Red Square "Uniqlo Style" */}
-                            <div className="w-16 h-16 bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
-                                <span className="text-white text-[3.5rem] font-bold leading-none mt-[-8px] ml-[-1px]" style={{ fontFamily: 'var(--font-chen)' }}>
-                                    快
-                                </span>
-                            </div>
-                            {/* "Series" Text */}
-                            <span
-                                className={`text-4xl font-bold leading-none mb-1 ${slide.textColor}`}
-                                style={{ fontFamily: 'var(--font-chen)' }}
-                            >
-                                系列
-                            </span>
+                        {/* Image Logo at Bottom Left */}
+                        <div className="absolute bottom-8 left-8 z-20 opacity-90">
+                            <img
+                                src={slide.logoSrc}
+                                alt={`${slide.title} Logo`}
+                                className="w-48 md:w-64 h-auto object-contain"
+                            />
                         </div>
                     </div>
                 ))}
