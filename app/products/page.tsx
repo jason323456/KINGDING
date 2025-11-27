@@ -367,256 +367,232 @@ function HeroBanner({ series }: { series: Series }) {
                                 {slide.desc}
                             </p>
                         </div>
-
-                        {/* CSS Logo at Bottom Left */}
-                        <div className="absolute bottom-8 left-8 z-20 flex flex-col items-start select-none opacity-90">
-                            {/* Top Row: Red Box + Chinese Text */}
-                            <div className="flex items-center gap-4 mb-3">
-                                <div className="w-20 h-20 bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
-                                    <span className="text-white font-bold leading-none text-[4.5rem] mt-[-6px] ml-[-1px]" style={{ fontFamily: 'var(--font-chen)' }}>
-                                        快
-                                    </span>
-                                </div>
-                                <span
-                                    className={`text-6xl font-bold tracking-tighter ${slide.textColor}`}
-                                    style={{ fontFamily: 'var(--font-chen)' }}
-                                >
-                                    系列
-                                </span>
-                            </div>
-                            {/* English Text */}
-                            <div className={`flex flex-col items-start font-sans font-bold tracking-wider ${slide.textColor}`}>
-                                <span className="text-2xl leading-none mb-1">KUAI SERIES</span>
-                                <span className="text-2xl leading-none">PHOTOCHROMIC LENS</span>
-                            </div>
-                        </div>
-                    </div>
                 ))}
 
-                {/* Indicators */}
-                <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
-                    {kuaiSlides.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentKuaiSlide(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
-                                ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
-                                : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
-                                }`}
-                        />
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
-            {/* Background Pattern */}
-            <div className={`absolute inset-0 opacity-10 ${isDark ? 'bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black' : 'bg-gray-50'}`}></div>
-
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span className={`inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest mb-6 
-          ${isDark ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : tagColors[series.tagColor] || tagColors.blue}
-        `}>
-                    {series.tag}
-                </span>
-
-                {/* Chinese Name */}
-                <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
-                    {series.name}
-                </h1>
-
-                {/* English Name (New Line) */}
-                <h2 className={`text-3xl md:text-5xl font-light mb-8 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
-                    {series.englishName}
-                </h2>
-
-                <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
-                    {series.desc}
-                </p>
-            </div>
-        </div>
-    );
-}
-
-// --- Main Page Content ---
-
-function ProductsContent() {
-    const searchParams = useSearchParams();
-    const router = useRouter();
-    const seriesParam = searchParams.get('series');
-    const viewParam = searchParams.get('view');
-
-    // Determine current mode
-    const isAllView = viewParam === 'all';
-    const activeSeriesId = seriesParam;
-    const activeSeries = productsData.find(s => s.id === activeSeriesId);
-
-    const handleSeriesClick = (seriesId: string) => {
-        router.push(`/products?series=${seriesId}`);
-    };
-
-    return (
-        <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
-            <Navbar />
-
-            <main className="flex-grow">
-
-                {/* MODE 1: SINGLE SERIES VIEW (Active when ?series=ID is present) */}
-                {activeSeries ? (
-                    <div className="animate-fade-in">
-                        {/* Sticky Tabs */}
-                        <div className="bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm overflow-x-auto">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <div className="flex justify-start md:justify-center space-x-4 md:space-x-8 min-w-max px-2">
-                                    {productsData.map((series) => (
-                                        <button
-                                            key={series.id}
-                                            onClick={() => router.push(`/products?series=${series.id}`)}
-                                            className={`py-4 px-2 border-b-2 font-medium text-base md:text-lg transition-colors duration-200 whitespace-nowrap ${activeSeries.id === series.id
-                                                ? 'border-blue-600 text-blue-600'
-                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                                }`}
-                                        >
-                                            {series.name}
-                                        </button>
-                                    ))}
-                                    <div className="flex items-center border-l border-gray-200 pl-4 ml-2 space-x-4">
-                                        <button
-                                            onClick={() => router.push('/products')}
-                                            className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                        >
-                                            ↶ 返回系列總覽
-                                        </button>
-                                        <button
-                                            onClick={() => router.push('/products?view=all')}
-                                            className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
-                                        >
-                                            ≡ 所有產品
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Hero Banner */}
-                        <HeroBanner series={activeSeries} />
-
-                        {/* Series Content */}
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                            {
-                                activeSeries.subSeries ? (
-                                    <div className="space-y-20">
-                                        {activeSeries.subSeries.map((sub) => (
-                                            <div key={sub.title}>
-                                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gray-200 pb-6">
-                                                    <div>
-                                                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                                                            {sub.title} <span className="text-lg text-gray-500 font-normal ml-2">{sub.subtitle}</span>
-                                                        </h2>
-                                                        <p className="text-gray-500 font-medium">{sub.desc}</p>
-                                                    </div>
-                                                    {sub.tag && (
-                                                        <div className="mt-4 md:mt-0">
-                                                            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${sub.tag.includes('旗艦') ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
-                                                                }`}>
-                                                                {sub.tag}
-                                                            </span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                <div className={`grid grid-cols-1 md:grid-cols-2 ${sub.products.length > 2 ? 'lg:grid-cols-3' : ''} gap-8`}>
-                                                    {sub.products.map((product) => (
-                                                        <ProductCard key={product.name} {...product} />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                        {activeSeries.products?.map((product) => (
-                                            <ProductCard key={product.name} {...product} />
-                                        ))}
-                                    </div>
-                                )
-                            }
-                        </div>
-                    </div>
-                ) : isAllView ? (
-                    // MODE 2: ALL PRODUCTS LIST (Sidebar View)
-                    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                        {/* ... (Previous Sidebar implementation can remain or be simplified if user prefers the Single View mostly) ... */}
-                        {/* Re-using the sidebar logic for completeness if user explicitly goes to ?view=all */}
-                        <div className="flex flex-col lg:flex-row gap-12">
-                            <aside className="hidden lg:block w-64 flex-shrink-0">
-                                <div className="sticky top-24 space-y-1">
-                                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-3">系列導覽</h3>
-                                    {productsData.map((series) => (
-                                        <a key={series.id} href={`#${series.id}`} className="block px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                            {series.name}
-                                        </a>
-                                    ))}
-                                    <button onClick={() => router.push('/products')} className="mt-8 w-full text-left px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">← 返回系列總覽</button>
-                                </div>
-                            </aside>
-                            <div className="flex-grow space-y-24">
-                                {productsData.map((series) => (
-                                    <section key={series.id} id={series.id} className="scroll-mt-28">
-                                        <div className="border-b border-gray-200 pb-6 mb-8">
-                                            <h2 className="text-3xl font-bold text-gray-900">{series.name}</h2>
-                                            <p className="mt-2 text-gray-500">{series.desc}</p>
-                                        </div>
-                                        {/* Simplified rendering for list view */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            {series.subSeries
-                                                ? series.subSeries.flatMap(s => s.products).map(p => <ProductCard key={p.name} {...p} />)
-                                                : series.products?.map(p => <ProductCard key={p.name} {...p} />)
-                                            }
-                                        </div>
-                                    </section>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    // MODE 3: SERIES OVERVIEW (Default Landing)
-                    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                        <div className="text-center mb-16">
-                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">產品系列總覽</h1>
-                            <p className="text-xl text-gray-500">選擇您感興趣的鏡片系列，探索更多細節。</p>
-                            <button
-                                onClick={() => router.push('/products?view=all')}
-                                className="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-                            >
-                                查看所有產品列表
-                            </button>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {productsData.map((series) => (
-                                <SeriesCard
-                                    key={series.id}
-                                    series={series}
-                                    onClick={() => handleSeriesClick(series.id)}
+                        {/* Indicators */}
+                        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
+                            {kuaiSlides.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentKuaiSlide(index)}
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentKuaiSlide
+                                        ? (currentKuaiSlide === 0 ? "bg-gray-900 w-6" : "bg-white w-6")
+                                        : (currentKuaiSlide === 0 ? "bg-gray-300" : "bg-gray-700")
+                                        }`}
                                 />
                             ))}
                         </div>
                     </div>
-                )}
+                );
+    }
 
-            </main>
+                return (
+                <div className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900 border-b border-gray-200'}`}>
+                    {/* Background Pattern */}
+                    <div className={`absolute inset-0 opacity-10 ${isDark ? 'bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black' : 'bg-gray-50'}`}></div>
 
-            <Footer />
-        </div>
-    );
+                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <span className={`inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest mb-6 
+          ${isDark ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : tagColors[series.tagColor] || tagColors.blue}
+        `}>
+                            {series.tag}
+                        </span>
+
+                        {/* Chinese Name */}
+                        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+                            {series.name}
+                        </h1>
+
+                        {/* English Name (New Line) */}
+                        <h2 className={`text-3xl md:text-5xl font-light mb-8 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                            {series.englishName}
+                        </h2>
+
+                        <p className={`text-xl md:text-2xl font-light tracking-[0.2em] mb-10 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
+                            {series.desc}
+                        </p>
+                    </div>
+                </div>
+                );
 }
 
-export default function Products() {
+                // --- Main Page Content ---
+
+                function ProductsContent() {
+    const searchParams = useSearchParams();
+                const router = useRouter();
+                const seriesParam = searchParams.get('series');
+                const viewParam = searchParams.get('view');
+
+                // Determine current mode
+                const isAllView = viewParam === 'all';
+                const activeSeriesId = seriesParam;
+    const activeSeries = productsData.find(s => s.id === activeSeriesId);
+
+    const handleSeriesClick = (seriesId: string) => {
+                    router.push(`/products?series=${seriesId}`);
+    };
+
+                return (
+                <div className="min-h-screen flex flex-col bg-gray-50 font-sans">
+                    <Navbar />
+
+                    <main className="flex-grow">
+
+                        {/* MODE 1: SINGLE SERIES VIEW (Active when ?series=ID is present) */}
+                        {activeSeries ? (
+                            <div className="animate-fade-in">
+                                {/* Sticky Tabs */}
+                                <div className="bg-white border-b border-gray-200 sticky top-16 z-40 shadow-sm overflow-x-auto">
+                                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                        <div className="flex justify-start md:justify-center space-x-4 md:space-x-8 min-w-max px-2">
+                                            {productsData.map((series) => (
+                                                <button
+                                                    key={series.id}
+                                                    onClick={() => router.push(`/products?series=${series.id}`)}
+                                                    className={`py-4 px-2 border-b-2 font-medium text-base md:text-lg transition-colors duration-200 whitespace-nowrap ${activeSeries.id === series.id
+                                                        ? 'border-blue-600 text-blue-600'
+                                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                                                        }`}
+                                                >
+                                                    {series.name}
+                                                </button>
+                                            ))}
+                                            <div className="flex items-center border-l border-gray-200 pl-4 ml-2 space-x-4">
+                                                <button
+                                                    onClick={() => router.push('/products')}
+                                                    className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                                >
+                                                    ↶ 返回系列總覽
+                                                </button>
+                                                <button
+                                                    onClick={() => router.push('/products?view=all')}
+                                                    className="py-4 px-2 border-b-2 border-transparent font-medium text-base md:text-lg text-gray-500 hover:text-blue-600 transition-colors whitespace-nowrap"
+                                                >
+                                                    ≡ 所有產品
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Hero Banner */}
+                                <HeroBanner series={activeSeries} />
+
+                                {/* Series Content */}
+                                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                                    {
+                                        activeSeries.subSeries ? (
+                                            <div className="space-y-20">
+                                                {activeSeries.subSeries.map((sub) => (
+                                                    <div key={sub.title}>
+                                                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gray-200 pb-6">
+                                                            <div>
+                                                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                                                                    {sub.title} <span className="text-lg text-gray-500 font-normal ml-2">{sub.subtitle}</span>
+                                                                </h2>
+                                                                <p className="text-gray-500 font-medium">{sub.desc}</p>
+                                                            </div>
+                                                            {sub.tag && (
+                                                                <div className="mt-4 md:mt-0">
+                                                                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${sub.tag.includes('旗艦') ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
+                                                                        }`}>
+                                                                        {sub.tag}
+                                                                    </span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <div className={`grid grid-cols-1 md:grid-cols-2 ${sub.products.length > 2 ? 'lg:grid-cols-3' : ''} gap-8`}>
+                                                            {sub.products.map((product) => (
+                                                                <ProductCard key={product.name} {...product} />
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                                {activeSeries.products?.map((product) => (
+                                                    <ProductCard key={product.name} {...product} />
+                                                ))}
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        ) : isAllView ? (
+                            // MODE 2: ALL PRODUCTS LIST (Sidebar View)
+                            <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                                {/* ... (Previous Sidebar implementation can remain or be simplified if user prefers the Single View mostly) ... */}
+                                {/* Re-using the sidebar logic for completeness if user explicitly goes to ?view=all */}
+                                <div className="flex flex-col lg:flex-row gap-12">
+                                    <aside className="hidden lg:block w-64 flex-shrink-0">
+                                        <div className="sticky top-24 space-y-1">
+                                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-3">系列導覽</h3>
+                                            {productsData.map((series) => (
+                                                <a key={series.id} href={`#${series.id}`} className="block px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                    {series.name}
+                                                </a>
+                                            ))}
+                                            <button onClick={() => router.push('/products')} className="mt-8 w-full text-left px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">← 返回系列總覽</button>
+                                        </div>
+                                    </aside>
+                                    <div className="flex-grow space-y-24">
+                                        {productsData.map((series) => (
+                                            <section key={series.id} id={series.id} className="scroll-mt-28">
+                                                <div className="border-b border-gray-200 pb-6 mb-8">
+                                                    <h2 className="text-3xl font-bold text-gray-900">{series.name}</h2>
+                                                    <p className="mt-2 text-gray-500">{series.desc}</p>
+                                                </div>
+                                                {/* Simplified rendering for list view */}
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                    {series.subSeries
+                                                        ? series.subSeries.flatMap(s => s.products).map(p => <ProductCard key={p.name} {...p} />)
+                                                        : series.products?.map(p => <ProductCard key={p.name} {...p} />)
+                                                    }
+                                                </div>
+                                            </section>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            // MODE 3: SERIES OVERVIEW (Default Landing)
+                            <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                                <div className="text-center mb-16">
+                                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">產品系列總覽</h1>
+                                    <p className="text-xl text-gray-500">選擇您感興趣的鏡片系列，探索更多細節。</p>
+                                    <button
+                                        onClick={() => router.push('/products?view=all')}
+                                        className="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                                    >
+                                        查看所有產品列表
+                                    </button>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {productsData.map((series) => (
+                                        <SeriesCard
+                                            key={series.id}
+                                            series={series}
+                                            onClick={() => handleSeriesClick(series.id)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                    </main>
+
+                    <Footer />
+                </div>
+                );
+}
+
+                export default function Products() {
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-            <ProductsContent />
-        </Suspense>
-    );
+                <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+                    <ProductsContent />
+                </Suspense>
+                );
 }
