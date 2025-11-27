@@ -507,92 +507,115 @@ function ProductsContent() {
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                             {
                                 activeSeries.subSeries ? (
-                                            <div className="space-y-20">
-                                                {activeSeries.subSeries.map((sub) => (
-                                                    <div key={sub.title}>
-                                                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gray-200 pb-6">
-                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                                {activeSeries.products?.map((product) => (
-                                                    <ProductCard key={product.name} {...product} />
-                                                ))}
+                                    <div className="space-y-20">
+                                        {activeSeries.subSeries.map((sub) => (
+                                            <div key={sub.title}>
+                                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-gray-200 pb-6">
+                                                    <div>
+                                                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                                                            {sub.title} <span className="text-lg text-gray-500 font-normal ml-2">{sub.subtitle}</span>
+                                                        </h2>
+                                                        <p className="text-gray-500 font-medium">{sub.desc}</p>
+                                                    </div>
+                                                    {sub.tag && (
+                                                        <div className="mt-4 md:mt-0">
+                                                            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${sub.tag.includes('旗艦') ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
+                                                                }`}>
+                                                                {sub.tag}
+                                                            </span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className={`grid grid-cols-1 md:grid-cols-2 ${sub.products.length > 2 ? 'lg:grid-cols-3' : ''} gap-8`}>
+                                                    {sub.products.map((product) => (
+                                                        <ProductCard key={product.name} {...product} />
+                                                    ))}
+                                                </div>
                                             </div>
-                                        )
-                                    }
-                                </div>
-                            </div>
-                        ) : isAllView ? (
-                            // MODE 2: ALL PRODUCTS LIST (Sidebar View)
-                            <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                                {/* ... (Previous Sidebar implementation can remain or be simplified if user prefers the Single View mostly) ... */}
-                                {/* Re-using the sidebar logic for completeness if user explicitly goes to ?view=all */}
-                                <div className="flex flex-col lg:flex-row gap-12">
-                                    <aside className="hidden lg:block w-64 flex-shrink-0">
-                                        <div className="sticky top-24 space-y-1">
-                                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-3">系列導覽</h3>
-                                            {productsData.map((series) => (
-                                                <a key={series.id} href={`#${series.id}`} className="block px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                                                    {series.name}
-                                                </a>
-                                            ))}
-                                            <button onClick={() => router.push('/products')} className="mt-8 w-full text-left px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">← 返回系列總覽</button>
-                                        </div>
-                                    </aside>
-                                    <div className="flex-grow space-y-24">
-                                        {productsData.map((series) => (
-                                            <section key={series.id} id={series.id} className="scroll-mt-28">
-                                                <div className="border-b border-gray-200 pb-6 mb-8">
-                                                    <h2 className="text-3xl font-bold text-gray-900">{series.name}</h2>
-                                                    <p className="mt-2 text-gray-500">{series.desc}</p>
-                                                </div>
-                                                {/* Simplified rendering for list view */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                    {series.subSeries
-                                                        ? series.subSeries.flatMap(s => s.products).map(p => <ProductCard key={p.name} {...p} />)
-                                                        : series.products?.map(p => <ProductCard key={p.name} {...p} />)
-                                                    }
-                                                </div>
-                                            </section>
                                         ))}
                                     </div>
+                                ) : (
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                        {activeSeries.products?.map((product) => (
+                                            <ProductCard key={product.name} {...product} />
+                                        ))}
+                                    </div>
+                                )
                                 </div>
-                            </div>
-                        ) : (
-                            // MODE 3: SERIES OVERVIEW (Default Landing)
-                            <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                                <div className="text-center mb-16">
-                                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">產品系列總覽</h1>
-                                    <p className="text-xl text-gray-500">選擇您感興趣的鏡片系列，探索更多細節。</p>
-                                    <button
-                                        onClick={() => router.push('/products?view=all')}
-                                        className="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-                                    >
-                                        查看所有產品列表
-                                    </button>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+                ) : isAllView ? (
+                    // MODE 2: ALL PRODUCTS LIST (Sidebar View)
+                    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                        {/* ... (Previous Sidebar implementation can remain or be simplified if user prefers the Single View mostly) ... */}
+                        {/* Re-using the sidebar logic for completeness if user explicitly goes to ?view=all */}
+                        <div className="flex flex-col lg:flex-row gap-12">
+                            <aside className="hidden lg:block w-64 flex-shrink-0">
+                                <div className="sticky top-24 space-y-1">
+                                    <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 px-3">系列導覽</h3>
                                     {productsData.map((series) => (
-                                        <SeriesCard
-                                            key={series.id}
-                                            series={series}
-                                            onClick={() => handleSeriesClick(series.id)}
-                                        />
+                                        <a key={series.id} href={`#${series.id}`} className="block px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                            {series.name}
+                                        </a>
                                     ))}
+                                    <button onClick={() => router.push('/products')} className="mt-8 w-full text-left px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors">← 返回系列總覽</button>
                                 </div>
+                            </aside>
+                            <div className="flex-grow space-y-24">
+                                {productsData.map((series) => (
+                                    <section key={series.id} id={series.id} className="scroll-mt-28">
+                                        <div className="border-b border-gray-200 pb-6 mb-8">
+                                            <h2 className="text-3xl font-bold text-gray-900">{series.name}</h2>
+                                            <p className="mt-2 text-gray-500">{series.desc}</p>
+                                        </div>
+                                        {/* Simplified rendering for list view */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            {series.subSeries
+                                                ? series.subSeries.flatMap(s => s.products).map(p => <ProductCard key={p.name} {...p} />)
+                                                : series.products?.map(p => <ProductCard key={p.name} {...p} />)
+                                            }
+                                        </div>
+                                    </section>
+                                ))}
                             </div>
-                        )}
+                        </div>
+                    </div>
+                ) : (
+                    // MODE 3: SERIES OVERVIEW (Default Landing)
+                    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                        <div className="text-center mb-16">
+                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">產品系列總覽</h1>
+                            <p className="text-xl text-gray-500">選擇您感興趣的鏡片系列，探索更多細節。</p>
+                            <button
+                                onClick={() => router.push('/products?view=all')}
+                                className="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+                            >
+                                查看所有產品列表
+                            </button>
+                        </div>
 
-                    </main>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {productsData.map((series) => (
+                                <SeriesCard
+                                    key={series.id}
+                                    series={series}
+                                    onClick={() => handleSeriesClick(series.id)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                )}
 
-                    <Footer />
-                </div>
-                        );
+            </main>
+
+            <Footer />
+        </div>
+    );
 }
 
-                        export default function Products() {
+export default function Products() {
     return (
-                        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-                            <ProductsContent />
-                        </Suspense>
-                        );
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <ProductsContent />
+        </Suspense>
+    );
 }
