@@ -372,19 +372,19 @@ function HeroBanner({ series }: { series: Series }) {
                         <div className="absolute bottom-8 left-8 z-20 flex flex-col items-start select-none opacity-90">
                             {/* Top Row: Red Box + Chinese Text */}
                             <div className="flex items-center gap-2 mb-2">
-                                <div className="w-[40px] h-[40px] bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
-                                    <span className="text-white font-black leading-none text-[2.2rem] mt-[-2px]" style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}>
+                                <div className="w-[32px] h-[32px] bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
+                                    <span className="text-white font-black leading-none text-[1.8rem] mt-[-2px]" style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}>
                                         快
                                     </span>
                                 </div>
                                 <span
-                                    className={`text-[40px] font-black tracking-tighter leading-none ${slide.textColor}`}
+                                    className={`text-[32px] font-black tracking-tighter leading-none ${slide.textColor}`}
                                     style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}
                                 >
                                     系
                                 </span>
                                 <span
-                                    className={`text-[40px] font-black tracking-tighter leading-none ${slide.textColor}`}
+                                    className={`text-[32px] font-black tracking-tighter leading-none ${slide.textColor}`}
                                     style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}
                                 >
                                     列
