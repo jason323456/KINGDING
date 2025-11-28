@@ -9,8 +9,8 @@ export default function Navbar() {
     const pathname = usePathname();
 
     const productLinks = [
-        { name: "所有系列 (總覽)", href: "/products" },
         { name: "所有產品 (列表)", href: "/products?view=all" },
+        { name: "所有系列 (總覽)", href: "/products" },
         { name: "快系列", href: "/products?series=kuai" },
         { name: "抗撞系列", href: "/products?series=impact" },
         { name: "超完美系列", href: "/products?series=super" },
