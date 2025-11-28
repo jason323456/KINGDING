@@ -373,18 +373,18 @@ function HeroBanner({ series }: { series: Series }) {
                             {/* Top Row: Red Box + Chinese Text */}
                             <div className="flex items-center gap-2 mb-2">
                                 <div className="w-[32px] h-[32px] bg-[#EC1D24] flex items-center justify-center shadow-sm overflow-hidden">
-                                    <span className="text-white font-black leading-none text-[1.8rem] mt-[-2px]" style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}>
+                                    <span className="text-white font-black leading-none text-[24px]" style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}>
                                         快
                                     </span>
                                 </div>
                                 <span
-                                    className={`text-[32px] font-black tracking-tighter leading-none ${slide.textColor}`}
+                                    className={`text-[24px] font-black tracking-tighter leading-none ${slide.textColor}`}
                                     style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}
                                 >
                                     系
                                 </span>
                                 <span
-                                    className={`text-[32px] font-black tracking-tighter leading-none ${slide.textColor}`}
+                                    className={`text-[24px] font-black tracking-tighter leading-none ${slide.textColor}`}
                                     style={{ fontFamily: '"Microsoft YaHei", "PingFang SC", "Heiti TC", sans-serif' }}
                                 >
                                     列
